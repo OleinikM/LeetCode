@@ -1,0 +1,23 @@
+class Solution {
+    public int calPoints(String[] operations) {
+        if(operations.length == 1 && (operations[0].equals("C") || operations[0].equals("D") || operations[0].equals("+"))) return 0;
+        int sum = 0;
+        Stack<String> stack = new Stack<>();
+        for(String operation : operations){
+            if(operation.equals("C")) stack.pop();
+                else if(operation.equals("D")){
+                    int temp = Integer.valueOf(stack.peek());
+                    stack.push(Integer.toString(temp*2));
+                } else if(operation.equals("+")){
+                    int temp1 = Integer.valueOf(stack.pop());
+                    int temp2 = Integer.valueOf(stack.peek());
+                    stack.push(Integer.toString(temp1));
+                    stack.push(Integer.toString(temp1+temp2));
+                } else stack.push(operation);
+        }
+        while(!stack.isEmpty()){
+            sum += Integer.valueOf(stack.pop());
+        }
+        return sum;
+    }
+}
