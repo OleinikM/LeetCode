@@ -7,7 +7,6 @@ All seats are initially available.
 int reserve() Fetches the smallest-numbered unreserved seat, reserves it, and returns its number.
 void unreserve(int seatNumber) Unreserves the seat with the given seatNumber.
 
-
 Example 1:
 
 Input
